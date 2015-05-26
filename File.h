@@ -35,7 +35,7 @@ class File {
      void settimec(int timec);
      void settimem(int timem);
      friend std::ostream &operator<<(std::ostream &output,  File &H);
-     File operator=(const File &);
+     File operator=(File &);
      bool operator==(const File &) const;
      void swap(File& Fl);
 };

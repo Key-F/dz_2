@@ -35,28 +35,28 @@ File::File(const File &Fl) {
 File::~File() {
 }
 
-void File::setname(const string& x) {
-    this->filename = x;
+void File::setname(const string& name) {
+    this->filename = name;
 }
 
-void File::settype(const string& x) {
-    this->filetype = x;
+void File::settype(const string& type) {
+    this->filetype = type;
 }
 
-void File::setsize(int x) {
-    this->filesize = x;
+void File::setsize(int size) {
+    this->filesize = size;
 }
 
-void File::setcreator(const string& x) {
-    this->filecreator = x;
+void File::setcreator(const string& creator) {
+    this->filecreator = creator;
 }
 
-void File::settimec(int x) {
-    this->timeofcr = x;
+void File::settimec(int time) {
+    this->timeofcr = time;
 }
 
-void File::settimem(int x) {
-    this->timeofmod = x;
+void File::settimem(int time) {
+    this->timeofmod = time;
 }
 
 const string& File::getname() const {
@@ -90,9 +90,10 @@ std::ostream &operator<<(std::ostream &stream, File &H) {
     "creator=" << H.getcreator();
 }
 
-File File::operator=(const File & Fl) {
-    File::swap(*this);
-    return *this;
+File File::operator=(File & Fl) {
+	if (this != &Fl) 
+    File::swap(Fl);
+    return Fl;
 }
 
 bool File::operator==(const File & Fl) const {

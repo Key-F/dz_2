@@ -54,9 +54,10 @@ void Cat::delfile(const File& Fl) {
     if (k == 0) std::cout << "File not found";
 }
 
-Cat Cat::operator=(const Cat &Ct) {
-    Cat::swap(*this);
-    return *this;
+Cat Cat::operator=(Cat &Ct) {
+	if (this != &Ct)
+    Cat::swap(Ct);
+    return Ct;
 }
 
 bool Cat::operator==(const Cat & Ct) const {

@@ -39,7 +39,7 @@ class Cat {
      int countsize(std::vector <File> F);
      friend std::ostream &operator<<(std::ostream &output, Cat &H);
      File operator[](int i);
-     Cat operator=(const Cat &);
+     Cat operator=(Cat &);
      bool operator==(const Cat &) const;
      Cat operator+(const Cat &);
      void swap(Cat& Ct);
