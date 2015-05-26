@@ -446,6 +446,7 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 			 int kol = Convert::ToInt32(textBox3->Text);
 			 int size = Convert::ToInt32(textBox4->Text);
 			    Cat* a = new Cat(name, kol, type, size);
+				System::Windows::Forms::MessageBox::Show("Каталог создан");
 			 }      
 		 }
 
@@ -494,6 +495,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 			 File* f = new File(name, creator,
                   type, size, timeofcreate, timeofmod);
 				a.addfile(*f);
+				System::Windows::Forms::MessageBox::Show("Файл добавлен");
 			 } 
 
 		 }
