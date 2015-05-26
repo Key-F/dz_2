@@ -19,7 +19,7 @@ class Cat {
  public:
      Cat();
      Cat(const string& name, int kol, const string& type,
-         int size, std::vector <File> F);
+         int size, const std::vector <File>& F);
 	 Cat(const string& name, int kol, const string& type,
          int size);
      ~Cat();
@@ -37,7 +37,7 @@ class Cat {
      void delfile(const File& FL);
      void printall();
      int countsize(std::vector <File> F);
-     friend std::ostream &operator<<(std::ostream &output, Cat &H);
+     friend std::ostream &operator<<(std::ostream &output, const Cat &H);
      File operator[](int i);
      Cat operator=(Cat &);
      bool operator==(const Cat &) const;

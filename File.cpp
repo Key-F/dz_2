@@ -82,7 +82,7 @@ int File::gettimem() const {
     return timeofmod;
 }
 
-std::ostream &operator<<(std::ostream &stream, File &H) {
+std::ostream &operator<<(std::ostream &stream, const File &H) {
      return stream << "File" <<
     "name=" << H.getname() << "," <<
     "type=" << H.gettype() << "," <<
@@ -97,10 +97,7 @@ File File::operator=(File & Fl) {
 }
 
 bool File::operator==(const File & Fl) const {
-    if (this->filesize == Fl.getsize())
-        return true;
-    else
-        return false;
+    return filesize == Fl.getsize();
 }
 
 void File::swap(File & Fl) {

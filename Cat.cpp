@@ -13,7 +13,7 @@ Cat::Cat() {
     cattype = "Nothing";
 }
 Cat::Cat(const string& name, int kol, const string& type,
-       int size, std::vector <File> F) {
+       int size, const std::vector <File>& F) {
     this->catname = name;
     this->cattype = type;
     this->kolfile = kol;
@@ -61,10 +61,7 @@ Cat Cat::operator=(Cat &Ct) {
 }
 
 bool Cat::operator==(const Cat & Ct) const {
-    if (this->getdata() == F)
-        return true;
-    else
-        return false;
+    return catsize == Ct.getsize();
 }
 
 
