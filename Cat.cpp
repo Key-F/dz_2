@@ -21,6 +21,14 @@ Cat::Cat(const string& name, int kol, const string& type,
     this->F = F;
 }
 
+Cat::Cat(const string& name, int kol, const string& type,
+       int size) {
+    this->catname = name;
+    this->cattype = type;
+    this->kolfile = kol;
+    this->catsize = size;
+}
+
 Cat::~Cat() {
 }
 

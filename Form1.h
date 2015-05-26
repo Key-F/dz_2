@@ -1,11 +1,24 @@
+// Copyright [2015] <Filatov Kirill>
 #pragma once
 
 #include "Cat.h"
 using namespace System::Runtime::InteropServices;
 
-char * and_SysStringToChar(System::String^ string) 
-{
+
+
+// System::String^ to char*  
+char * and_SysStringToChar(System::String^ string) {
 return (char*)(void*)Marshal::StringToHGlobalAnsi(string);
+}
+
+// char* to System::String^
+System::String^ /* * */ and_CharToSysString(char* ch) {
+char * chr=new char[]=ch;
+System::String^ str;
+for(int i=0;chr[i]!='\0';i++) {
+     str+=wchar_t(ch[i]);
+}
+return str;
 }
 
 namespace trdz {
@@ -141,7 +154,7 @@ namespace trdz {
 			this->êàòàëîãèToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {this->äîáàâèòüToolStripMenuItem, 
 				this->ğåäàêòèğîâàòüToolStripMenuItem});
 			this->êàòàëîãèToolStripMenuItem->Name = L"êàòàëîãèToolStripMenuItem";
-			this->êàòàëîãèToolStripMenuItem->Size = System::Drawing::Size(124, 22);
+			this->êàòàëîãèToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->êàòàëîãèToolStripMenuItem->Text = L"Êàòàëîãè";
 			// 
 			// äîáàâèòüToolStripMenuItem
@@ -162,7 +175,7 @@ namespace trdz {
 			this->ôàéëûToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {this->äîáàâèòüToolStripMenuItem1, 
 				this->ğåäàêòèğîâàòüToolStripMenuItem1});
 			this->ôàéëûToolStripMenuItem->Name = L"ôàéëûToolStripMenuItem";
-			this->ôàéëûToolStripMenuItem->Size = System::Drawing::Size(124, 22);
+			this->ôàéëûToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->ôàéëûToolStripMenuItem->Text = L"Ôàéëû";
 			// 
 			// äîáàâèòüToolStripMenuItem1
@@ -170,7 +183,7 @@ namespace trdz {
 			this->äîáàâèòüToolStripMenuItem1->Name = L"äîáàâèòüToolStripMenuItem1";
 			this->äîáàâèòüToolStripMenuItem1->Size = System::Drawing::Size(154, 22);
 			this->äîáàâèòüToolStripMenuItem1->Text = L"Äîáàâèòü";
-			this->äîáàâèòüToolStripMenuItem1->Click += gcnew System::EventHandler(this, &Form1::äîáàâèòüToolStripMenuItem1_Click);
+			this->äîáàâèòüToolStripMenuItem1->Click += gcnew System::EventHandler(this, &Form1::äîáàâèòüToolStripMenuItem1_Click_1);
 			// 
 			// ğåäàêòèğîâàòüToolStripMenuItem1
 			// 
@@ -405,13 +418,18 @@ private: System::Void äîáàâèòüToolStripMenuItem_Click(System::Object^  sender, S
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //std::vector <File> F = 0;
 			 char *name1 = new char[] = and_SysStringToChar(textBox1->Text);
+			 //if (name1 == "")
+				// System::Windows::Forms::MessageBox::Show("Íå âñå ïîëÿ çàïîëíåíû");
 			 string name = name1;
-		     //char* name1 =  Convert::ToString(textBox1->Text); //ToChar
-			 //String( name = name1;
-			 //int kol = Convert::ToInt32(textBox3->Text);
-			 //const string& type = Convert::ToString(textBox2->Text);
-			 //int size = Convert::ToInt32(textBox4->Text);
-			 //Cat::Cat(name, kol, type, size, F);
+			 char *type1 = new char[] = and_SysStringToChar(textBox2->Text);
+			 string type = type1;
+			 if ((name == "")||(type == "")||(textBox3->Text == "")||(textBox4->Text == ""))
+				 System::Windows::Forms::MessageBox::Show("Íå âñå ïîëÿ çàïîëíåíû");
+			 else {
+			 int kol = Convert::ToInt32(textBox3->Text);
+			 int size = Convert::ToInt32(textBox4->Text);
+			    Cat* a = new Cat(name, kol, type, size);
+			 }      
 		 }
 private: System::Void äîáàâèòüToolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e) {
 			 checkedListBox1->Visible = false;
@@ -436,7 +454,29 @@ private: System::Void äîáàâèòüToolStripMenuItem1_Click(System::Object^  sender, 
 			 textBox7->Visible = true;
 			 }
 
-		 };
+		 private: System::Void äîáàâèòüToolStripMenuItem1_Click_1(System::Object^  sender, System::EventArgs^  e) {
+					  checkedListBox1->Visible = false;
+			 label5->Visible = false;
+			 label1->Visible = true;
+		     label2->Visible = true;
+			 label3->Visible = false;
+			 label4->Visible = true;
+			 label6->Visible = true;
+			 label6->Text = "Ôàéë";
+			 textBox1->Visible = true;
+			 textBox2->Visible = true;
+			 textBox3->Visible = false;
+			 textBox4->Visible = true;
+			 checkedListBox1->Visible = false;
+			 button1->Visible = true;
+			 label7->Visible = true;
+			 label8->Visible = true;
+			 label9->Visible = true;
+			 textBox5->Visible = true;
+			 textBox6->Visible = true;
+			 textBox7->Visible = true;
+				  }
+};
 };
 
 

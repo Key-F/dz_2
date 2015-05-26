@@ -20,6 +20,8 @@ class Cat {
      Cat();
      Cat(const string& name, int kol, const string& type,
          int size, std::vector <File> F);
+	 Cat(const string& name, int kol, const string& type,
+         int size);
      ~Cat();
      const string& getname() const;
      int getkol() const;
