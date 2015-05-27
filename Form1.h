@@ -7,8 +7,8 @@
 using namespace System::Runtime::InteropServices;
 
 //Cat a;
-//Cat a;
-std::auto_ptr<Cat> a;
+Cat a;
+//std::auto_ptr<Cat> a;
 File f;
 std::vector <File> Fx;
 
@@ -450,7 +450,11 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
              else {
              int kol = Convert::ToInt32(textBox3->Text);
              int size = Convert::ToInt32(textBox4->Text);
-             std::auto_ptr<Cat> a ( new Cat(name, kol, type, size));
+			 a.setname(name);
+			 a.settype(type);
+			 a.setkol(kol);
+			 a.setsize(size);
+             //std::auto_ptr<Cat> a ( new Cat(name, kol, type, size));
              //Cat* a = new Cat(name, kol, type, size);
              System::Windows::Forms::MessageBox::Show("Êàòàëîã ñîçäàí");
              }      
@@ -501,11 +505,21 @@ private: System::Void ðåäàêòèðîâàòüToolStripMenuItem_Click(System::Object^  send
              textBox5->Visible = false;
              textBox6->Visible = false;
              textBox7->Visible = false;
+			 textBox1->Text = "";
+			 textBox2->Text = "";
+			 textBox3->Text = "";
+			 textBox4->Text = "";
              string name1 = a.getname();
-             //char* name = name1.c_str;
-            // char *name = new char[name1.length() + 1];
-             //char* name = a.getname().c_str;
-             textBox1->Text = gcnew String(name1.c_str());
+			 textBox1->Text = gcnew String(name1.c_str());
+             // char* name = name1.c_str;
+             // char *name = new char[name1.length() + 1];
+             // char* name = a.getname().c_str;
+			 string type1 = a.gettype();
+			 textBox2->Text = gcnew String(type1.c_str());
+			 int kol1 = a.getkol();
+			 textBox3->Text = Convert::ToString(kol1);
+			 int size1 = a.getsize();
+			 textBox4->Text = Convert::ToString(size1);
          }
 private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) { // Add file
               //std::vector <File> F = 0;

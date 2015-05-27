@@ -25,7 +25,7 @@ class Cat {
      ~Cat();
      const string& getname() const;
      int getkol() const;
-     const string& getttype() const;
+     const string& gettype() const;
      int getsize() const;
      const std::vector <File>& getdata() const;
      void setname(const string& name);

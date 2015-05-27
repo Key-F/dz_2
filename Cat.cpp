@@ -94,7 +94,7 @@ int Cat::getkol() const {
     return kolfile;
 }
 
-const string& Cat::getttype() const {
+const string& Cat::gettype() const {
     return cattype;
 }
 
