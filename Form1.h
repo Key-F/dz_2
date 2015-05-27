@@ -541,6 +541,8 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
                   type, size, timeofcreate, timeofmod);
              Fx.push_back(*f); // vector of files
              a.addfile(*f);
+			 
+			 checkedListBox1->Items->Add(gcnew String(f->getname().c_str()));
              System::Windows::Forms::MessageBox::Show("Файл добавлен");
              } 
 
